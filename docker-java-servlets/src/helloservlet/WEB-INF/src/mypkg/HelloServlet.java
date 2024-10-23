@@ -10,15 +10,20 @@ public class HelloServlet extends HttpServlet
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
   {
       response.setContentType("text/html");  
-      PrintWriter out = response.getWriter();  
-      out.print("Hello world ");  
+      PrintWriter out = response.getWriter();
+      out.println("<html>");
+      out.println("<head>");
+      out.println("<title>Hello World</title>");
+      out.println("</head>");
+      out.println("<body>");
           
       HttpSession session=request.getSession();
       Cookie[] cookies = request.getCookies();
       for (int i = 0; i < cookies.length; i++) {
-        out.print("cookie: " + cookies[i].getName() + ":" + cookies[i].getValue());
+        out.println("<p>" + cookies[i].getName() + " : " + cookies[i].getValue() + "</p>");
       }
 
+      out.println("</body></html>");
       out.close();  
   }
 }

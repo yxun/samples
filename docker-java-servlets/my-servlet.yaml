@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: servlet
+  name: hello
+spec:
+  selector:
+    matchLabels:
+      app: hello
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+        - name: container
+          image: >-
+            quay.io/yuaxu/java-servlet:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          command: ["run.sh"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello
+  namespace: servlet
+spec:
+  selector:
+    app: hello
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

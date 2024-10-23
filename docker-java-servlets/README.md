@@ -10,10 +10,21 @@ $ docker build .
 $ docker compose up
 ```
 
-Per default the application found in /src/helloservlet is served. You can change that by changing the APP_NAME and APP_CLASS in the docker-compose.yml.
-
 To visit your source go to:
 
 ```
 http://localhost:8080/helloservlet/sayhello
+```
+
+## Deploying and running the application on OpenShift
+
+```
+$ oc new-project servlet
+$ oc apply -n servlet -f my-servlet.yaml
+$ oc expose -n servlet svc/hello
+```
+To visit your source go to:
+
+```
+http://[OpenShift Route location url]/helloservlet/sayhello
 ```
