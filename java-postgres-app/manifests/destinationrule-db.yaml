@@ -4,7 +4,7 @@ metadata:
   name: edb-postgres-simple-tls
   namespace: edb-test
 spec:
-  host: ort1-str-region-1-rw.pgd-group.svc.cluster.local
+  host: ort1-str-region-1-rw-primary.pgd-group.svc.cluster.local
   trafficPolicy:
     portLevelSettings:
     - port:
@@ -12,18 +12,4 @@ spec:
       tls:
         mode: SIMPLE
         caCertificates: /var/run/secrets/istio/root-cert.pem
----
-apiVersion: networking.istio.io/v1beta1
-kind: ServiceEntry
-metadata:
-  name: edb-postgres-external
-  namespace: edb-test
-spec:
-  hosts:
-  - ort1-str-region-1-rw.pgd-group.svc.cluster.local
-  location: MESH_EXTERNAL
-  ports:
-  - number: 5432
-    name: tcp-postgres
-    protocol: TCP
-  resolution: DNS
+
