@@ -20,7 +20,7 @@ http://localhost:8080/helloservlet/sayhello
 
 ```
 $ oc new-project servlet
-$ oc apply -n servlet -f my-servlet.yaml
+$ oc apply -n servlet -f manifests/my-servlet.yaml
 $ oc expose -n servlet svc/hello
 ```
 To visit your source go to:
