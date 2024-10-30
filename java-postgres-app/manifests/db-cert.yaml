@@ -4,7 +4,8 @@ metadata:
   name: db-cert
 type: Opaque
 data:
-  server.crt: | 
+  server.crt: |
     # Base64 encode your certificate file
     # Example: base64 -w 0 path/to/your/certificate.crt
-    YOUR_BASE64_ENCODED_CERTIFICATE
+    # valueFrom: { secretKeyRef: { name: pgo-root-cacert, key: root.crt } }
+
