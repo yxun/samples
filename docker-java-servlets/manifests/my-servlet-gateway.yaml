@@ -29,6 +29,11 @@ spec:
   http:
   - match:
     - uri:
+        exact: /sayhello
+    redirect:
+      uri: /helloservlet/sayhello
+  - match:
+    - uri:
         exact: /helloservlet/sayhello
     route:
     - destination:
