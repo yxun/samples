@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: servlet
-  name: hello
+  name: login
 spec:
   selector:
     matchLabels:
-      app: hello
+      app: login
   replicas: 1
   template:
     metadata:
       annotations:
         sidecar.istio.io/inject: "true"
       labels:
-        app: hello
+        app: login
     spec:
       containers:
         - name: container
@@ -27,11 +27,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello
+  name: login
   namespace: servlet
 spec:
   selector:
-    app: hello
+    app: login
   ports:
     - protocol: TCP
       port: 8080

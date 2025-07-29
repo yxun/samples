@@ -8,7 +8,7 @@ ENV JPDA_ADDRESS="8000"
 ENV JPDA_TRANSPORT="dt_socket"
 
 COPY ./src /usr/local/tomcat/webapps
-WORKDIR /usr/local/tomcat/webapps/helloservlet/WEB-INF
+WORKDIR /usr/local/tomcat/webapps/myservlet/WEB-INF
 RUN javac -classpath .:/usr/local/tomcat/lib/servlet-api.jar -d classes src/mypkg/*
 
 WORKDIR /usr/local/tomcat/bin

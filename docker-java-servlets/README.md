@@ -13,7 +13,7 @@ $ docker compose up
 To visit your source go to:
 
 ```
-http://localhost:8080/helloservlet/sayhello
+http://localhost:8080/myservlet/login
 ```
 
 ## Deploying and running the application on OpenShift
@@ -21,10 +21,11 @@ http://localhost:8080/helloservlet/sayhello
 ```
 $ oc new-project servlet
 $ oc apply -n servlet -f manifests/my-servlet.yaml
-$ oc expose -n servlet svc/hello
+$ oc apply -n servlet -f manifests/my-servlet-gateway.yaml
 ```
 To visit your source go to:
 
 ```
-http://[OpenShift Route location url]/helloservlet/sayhello
+http://[OpenShift Route location url]/myservlet/login
+http://[OpenShift Route location url]/myservlet/role
 ```

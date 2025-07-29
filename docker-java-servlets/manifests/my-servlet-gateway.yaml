@@ -29,14 +29,25 @@ spec:
   http:
   - match:
     - uri:
-        exact: /sayhello
-    redirect:
-      uri: /helloservlet/sayhello
-  - match:
-    - uri:
-        exact: /helloservlet/sayhello
+        prefix: /myservlet/login
     route:
     - destination:
-        host: hello.servlet.svc.cluster.local
+        host: login.servlet.svc.cluster.local
+        port:
+          number: 8080
+  - match:
+    - uri:
+        prefix: /myservlet/portal
+    route:
+    - destination:
+        host: login.servlet.svc.cluster.local
+        port:
+          number: 8080
+  - match:
+    - uri:
+        prefix: /myservlet/role
+    route:
+    - destination:
+        host: login.servlet.svc.cluster.local
         port:
           number: 8080
