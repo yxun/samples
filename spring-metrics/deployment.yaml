@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jvm-metrics-deployment
+  labels:
+    app: jvm-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jvm-metrics
+  template:
+    metadata:
+      labels:
+        app: jvm-metrics
+    spec:
+      containers:
+      - name: jvm-metrics
+        image: quay.io/yuaxu/jvm-metrics:latest
+        ports:
+        - containerPort: 8084
