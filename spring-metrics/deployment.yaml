@@ -19,3 +19,18 @@ spec:
         image: quay.io/yuaxu/jvm-metrics:latest
         ports:
         - containerPort: 8084
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jvm-metrics-svc
+  labels:
+    app: jvm-metrics
+spec:
+  selector:
+    app: jvm-metrics
+  ports:
+  - name: metrics
+    protocol: TCP
+    port: 8084
+    targetPort: 8084
